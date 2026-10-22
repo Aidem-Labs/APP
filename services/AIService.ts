@@ -1,5 +1,5 @@
 import { Config } from '@/constants/Config';
-import { api, APIService } from '@/services/APIService';
+import { api, apiService, APIService } from '@/services/APIService';
 
 // Dedicated backend client for persona agent calls (120s timeout for slow LLM)
 const personaClient = new APIService(Config.PERSONA_API_URL, 120000);
@@ -219,12 +219,26 @@ export class AIService {
   ): Promise<{ response: string; sessionId: string; personas: string[] }> {
     try {
       console.log('Sending persona chat request...');
+      let memoryContext = '';
+      try {
+        const memory = await apiService.request<{ memory_context: string }>(
+          `/api/backend/ai/memory?session_id=${encodeURIComponent(sessionId)}`,
+          { method: 'GET', timeout: 5000 }
+        );
+        if (memory.success && memory.data?.memory_context) {
+          memoryContext = memory.data.memory_context;
+        }
+      } catch {
+        memoryContext = '';
+      }
+
       const response = await personaClient.post<{ response: string; session_id: string; personas: string[] }>(
         '/api/chat',
         {
           session_id: sessionId,
           message,
           onboarding_data: onboardingData || {},
+          memory_context: memoryContext,
         }
       );
 
@@ -255,6 +269,19 @@ export class AIService {
   ): Promise<{ response: string; sessionId: string; personas: string[]; sources: string[] }> {
     try {
       console.log('Sending therapy chat request...');
+      let memoryContext = '';
+      try {
+        const memory = await apiService.request<{ memory_context: string }>(
+          `/api/backend/ai/memory?session_id=${encodeURIComponent(sessionId)}`,
+          { method: 'GET', timeout: 5000 }
+        );
+        if (memory.success && memory.data?.memory_context) {
+          memoryContext = memory.data.memory_context;
+        }
+      } catch {
+        memoryContext = '';
+      }
+
       const response = await personaClient.post<{ response: string; session_id: string; personas: string[]; sources: string[] }>(
         '/api/therapy-chat',
         {
@@ -265,6 +292,7 @@ export class AIService {
           journal_consent: options?.journalConsent ?? true,
           user_type: options?.userType || 'default',
           country_type: options?.countryType || 'US',
+          memory_context: memoryContext,
         }
       );
 
