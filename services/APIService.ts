@@ -362,6 +362,21 @@ export const profileAPI = {
 };
 
 // Password Reset API methods
+export interface PrivacyDataExport {
+  exportedAt: string;
+  accountType: 'patient' | 'student';
+  profile: Record<string, unknown>;
+  journalEntries: Array<Record<string, unknown>>;
+  aiSummaries: Array<Record<string, unknown>>;
+  aiConversations: Array<Record<string, unknown>>;
+}
+
+export const dataPrivacyAPI = {
+  exportData: async (): Promise<APIResponse<{ success: boolean; data: PrivacyDataExport }>> =>
+    api.post('/api/app-auth/data'),
+  deleteAccount: async (): Promise<APIResponse<{ success: boolean; message: string }>> =>
+    api.delete('/api/app-auth/data'),
+};
 export const passwordResetAPI = {
   // Request password reset (POST)
   requestPasswordReset: async (email: string): Promise<APIResponse> => {
@@ -440,6 +455,8 @@ export interface JournalEntryResponse {
 export interface ClinicianSharingPreferences {
   shareAIConversationSummary: boolean;
   shareJournalEntrySummary: boolean;
+  share_ai_conversation_summary?: boolean;
+  share_journal_entry_summary?: boolean;
 }
 
 export interface ClinicianSharingPreferencesResponse {
@@ -447,6 +464,8 @@ export interface ClinicianSharingPreferencesResponse {
   data?: ClinicianSharingPreferences;
   shareAIConversationSummary?: boolean;
   shareJournalEntrySummary?: boolean;
+  share_ai_conversation_summary?: boolean;
+  share_journal_entry_summary?: boolean;
   message?: string;
 }
 

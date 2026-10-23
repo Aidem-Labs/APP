@@ -7,14 +7,18 @@ import { LMN8Colors, LMN8Spacing, LMN8Typography } from '@/constants/LMN8DesignS
 import { useAuth } from '@/contexts/AuthContext';
 import { useOnboarding } from '@/contexts/OnboardingContext';
 import { useVoiceStress } from '@/contexts/VoiceStressContext';
-import { clinicianSharingAPI, ClinicianSharingPreferences } from '@/services/APIService';
+import { clinicianSharingAPI, ClinicianSharingPreferences, dataPrivacyAPI } from '@/services/APIService';
+import { databaseService } from '@/services/DatabaseService';
+import { createPrivacyExportPdf } from '@/services/PrivacyDataService';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router, useFocusEffect } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useCallback, useState } from 'react';
 import {
+    ActivityIndicator,
     Alert,
     Dimensions,
+    Modal,
     ScrollView,
     StyleSheet,
     Switch,
@@ -47,6 +51,7 @@ export default function SettingsScreen() {
     shareJournalEntrySummary: true,
   });
   const [journalAiConsent, setJournalAiConsent] = useState(true);
+  const [isDataActionRunning, setIsDataActionRunning] = useState(false);
 
   const handleLogout = () => {
     Alert.alert(
@@ -84,11 +89,69 @@ export default function SettingsScreen() {
     );
   };
 
-  const handleExportData = () => {
+  // Data deletion: clears only this signed-in user after the server confirms deletion.
+  const finishAccountDeletion = async () => {
+    const currentUserId = user?.id;
+    if (currentUserId) {
+      await databaseService.clearUserData(currentUserId).catch((error) =>
+        console.warn('Could not clear scoped local data:', error)
+      );
+    }
+    await AsyncStorage.multiRemove(['journal_ai_consent', 'chat_sessions_v1']);
+    clearOnboardingData();
+    await logout();
+    router.replace('/login');
+  };
+
+  const deleteMyData = async () => {
+    setIsDataActionRunning(true);
+    try {
+      const response = await dataPrivacyAPI.deleteAccount();
+      if (!response.success) throw new Error(response.error || 'Deletion request failed');
+      await finishAccountDeletion();
+      Alert.alert('Data Deleted', 'Your account and personal data have been permanently deleted.');
+    } catch (error) {
+      console.error('Account deletion failed:', error);
+      Alert.alert('Deletion Failed', 'We could not complete deletion. Please try again later or contact support.');
+    } finally {
+      setIsDataActionRunning(false);
+    }
+  };
+
+  const handleExportAndDelete = () => {
     Alert.alert(
-      'Export Data',
-      'This feature will be available soon. You\'ll be able to export your journey entries and chat history.',
-      [{ text: 'OK' }]
+      'Download & Delete My Data',
+      'We will create a PDF on this device, open the save/share sheet, then permanently delete your account and personal data. This cannot be undone.',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Download & Delete',
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              const exportResponse = await dataPrivacyAPI.exportData();
+              const exportData = exportResponse.data?.data;
+              if (!exportResponse.success || !exportData) throw new Error(exportResponse.error || 'Export request failed');
+              await createPrivacyExportPdf(exportData);
+              await deleteMyData();
+            } catch (error) {
+              console.error('Export and deletion failed:', error);
+              Alert.alert('Export Failed', 'Your data was not deleted. Please try again.');
+            }
+          },
+        },
+      ]
+    );
+  };
+
+  const handleDeleteMyData = () => {
+    Alert.alert(
+      'Delete My Data',
+      'This permanently deletes your signed-in account, email, profile, journal entries, summaries, AI conversations and related records.',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        { text: 'Delete My Data', style: 'destructive', onPress: deleteMyData },
+      ]
     );
   };
 
@@ -363,22 +426,38 @@ export default function SettingsScreen() {
           </View>
         </View>
 
-        {/* Data Section */}
+        {/* Data deletion and export controls */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Data</Text>
           <View style={styles.sectionCard}>
-            {/* Export Data - COMMENTED OUT: not implemented */}
-            {/* <TouchableOpacity style={styles.settingItem} onPress={handleExportData}>
+            <TouchableOpacity
+              style={styles.settingItem}
+              onPress={handleExportAndDelete}
+              disabled={isDataActionRunning}
+            >
               <View style={styles.settingInfo}>
-                <Text style={styles.settingTitle}>Export Data</Text>
-                <Text style={styles.settingDescription}>Download your journey data</Text>
+                <Text style={styles.settingTitle}>Download & Delete My Data</Text>
+                <Text style={styles.settingDescription}>Save a PDF to this device, then permanently delete only your data</Text>
               </View>
               <Text style={styles.settingArrow}>›</Text>
             </TouchableOpacity>
 
-            <View style={styles.settingDivider} /> */}
+            <View style={styles.settingDivider} />
 
-            <TouchableOpacity style={styles.settingItem} onPress={handleResetOnboarding}>
+            <TouchableOpacity
+              style={styles.settingItem}
+              onPress={handleDeleteMyData}
+              disabled={isDataActionRunning}
+            >
+              <View style={styles.settingInfo}>
+                <Text style={[styles.settingTitle, styles.dangerText]}>Delete My Data</Text>
+                <Text style={styles.settingDescription}>Permanently delete your account and personal records</Text>
+              </View>
+              <Text style={styles.settingArrow}>›</Text>
+            </TouchableOpacity>
+
+            <View style={styles.settingDivider} />
+            <TouchableOpacity style={styles.settingItem} onPress={handleResetOnboarding} disabled={isDataActionRunning}>
               <View style={styles.settingInfo}>
                 <Text style={[styles.settingTitle, styles.dangerText]}>Reset Profile</Text>
                 <Text style={styles.settingDescription}>Start over with onboarding</Text>
@@ -426,6 +505,15 @@ export default function SettingsScreen() {
         </View>
       </ScrollView>
 
+      <Modal visible={isDataActionRunning} transparent animationType="fade" statusBarTranslucent>
+        <View style={styles.deletionOverlay}>
+          <View style={styles.deletionLoaderCard}>
+            <ActivityIndicator size="large" color={LMN8Colors.accentPrimary} />
+            <Text style={styles.deletionLoaderTitle}>Deleting your data…</Text>
+            <Text style={styles.deletionLoaderText}>Please keep the app open while we securely complete this request.</Text>
+          </View>
+        </View>
+      </Modal>
       {/* Password Reset Modal */}
       <PasswordResetModal
         visible={showPasswordResetModal}
@@ -452,6 +540,39 @@ const styles = StyleSheet.create({
     backgroundColor: LMN8Colors.bgDark,
   },
 
+  deletionOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(7, 10, 24, 0.78)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: LMN8Spacing.xl,
+  },
+
+  deletionLoaderCard: {
+    width: '100%',
+    maxWidth: 340,
+    borderRadius: 18,
+    padding: LMN8Spacing.xl,
+    alignItems: 'center',
+    backgroundColor: LMN8Colors.container,
+    borderWidth: 1,
+    borderColor: `${LMN8Colors.accentPrimary}55`,
+  },
+
+  deletionLoaderTitle: {
+    ...LMN8Typography.h3,
+    color: LMN8Colors.text100,
+    marginTop: LMN8Spacing.lg,
+    marginBottom: LMN8Spacing.sm,
+  },
+
+  deletionLoaderText: {
+    ...LMN8Typography.body,
+    color: LMN8Colors.text85,
+    fontSize: 14,
+    textAlign: 'center',
+    lineHeight: 20,
+  },
   scrollView: {
     flex: 1,
   },

@@ -329,6 +329,14 @@ class DatabaseService {
     }
   }
 
+  async clearUserData(patientId: string): Promise<void> {
+    if (!this.db) throw new Error('Database not initialized');
+
+    // Scope local cleanup to the current user. Never erase another device user's records.
+    await this.db.runAsync('DELETE FROM sessions WHERE patientId = ?', [patientId]);
+    await this.db.runAsync('DELETE FROM therapeutic_goals WHERE patientId = ?', [patientId]);
+    await this.db.runAsync('DELETE FROM patients WHERE id = ?', [patientId]);
+  }
   async clearAllData(): Promise<void> {
     if (!this.db) throw new Error('Database not initialized');
 
