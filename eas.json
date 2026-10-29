@@ -24,8 +24,8 @@
         "simulator": false
       },
       "env": {
-        "EXPO_PUBLIC_API_BASE_URL": "https://lumen8health.com",
-        "EXPO_PUBLIC_BACKEND_URL": "https://lumen8health.com",
+        "EXPO_PUBLIC_API_BASE_URL": "https://www.metat8.com",
+        "EXPO_PUBLIC_BACKEND_URL": "https://www.metat8.com",
         "EXPO_PUBLIC_PERSONA_API_URL": "https://luminate.snifr.app"
       }
     },
@@ -37,8 +37,8 @@
         "simulator": false
       },
       "env": {
-        "EXPO_PUBLIC_API_BASE_URL": "https://lumen8health.com",
-        "EXPO_PUBLIC_BACKEND_URL": "https://lumen8health.com",
+        "EXPO_PUBLIC_API_BASE_URL": "https://www.metat8.com",
+        "EXPO_PUBLIC_BACKEND_URL": "https://www.metat8.com",
         "EXPO_PUBLIC_PERSONA_API_URL": "https://luminate.snifr.app"
       }
     }

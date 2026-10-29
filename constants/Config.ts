@@ -10,11 +10,11 @@ export const Config = {
   APP_VERSION: '1.0.0',
   
   // Backend API Configuration
-  API_BASE_URL: process.env.EXPO_PUBLIC_API_BASE_URL || 'https://lumen8health.com',
+  API_BASE_URL: process.env.EXPO_PUBLIC_API_BASE_URL || 'https://www.metat8.com',
   BACKEND_URL:
     process.env.EXPO_PUBLIC_BACKEND_URL ||
     process.env.EXPO_PUBLIC_API_BASE_URL ||
-    'https://lumen8health.com',
+    'https://www.metat8.com',
 
   // Persona Agent API (separate local lmn8-backend)
   PERSONA_API_URL: process.env.EXPO_PUBLIC_PERSONA_API_URL || 'https://luminate.snifr.app',
