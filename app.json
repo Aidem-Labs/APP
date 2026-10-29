@@ -2,7 +2,7 @@
   "expo": {
     "name": "METAT8",
     "slug": "lmn8",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "lmn8app",
@@ -11,7 +11,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.aman121212.METAT8APP",
-      "buildNumber": "4",
+      "buildNumber": "5",
       "infoPlist": {
         "NSMicrophoneUsageDescription": "METAT8 needs microphone access so you can record voice memo journal entries.",
         "NSHealthShareUsageDescription": "METAT8 needs access to your health data to provide personalized mental wellness insights and therapeutic support. Your health data helps us understand stress patterns and provide better care.",
