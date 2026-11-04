@@ -243,7 +243,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     ...LMN8Typography.body,
-    color: LMN8Colors.text60,
+    color: LMN8Colors.text85,
   },
   newEntryContainer: {
     paddingHorizontal: LMN8Spacing.lg,

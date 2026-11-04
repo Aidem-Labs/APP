@@ -529,7 +529,7 @@ const styles = StyleSheet.create({
 
   subtitle: {
     ...LMN8Typography.body,
-    color: LMN8Colors.text60,
+    color: LMN8Colors.text85,
     fontSize: 14,
     fontWeight: '300',
     letterSpacing: 0.5,
@@ -642,7 +642,7 @@ const styles = StyleSheet.create({
     ...LMN8Typography.body,
     fontSize: 13,
     fontWeight: '300',
-    color: LMN8Colors.text60,
+    color: LMN8Colors.text85,
   },
 
   // Empty State

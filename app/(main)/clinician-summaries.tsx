@@ -251,12 +251,13 @@ const styles = StyleSheet.create({
   title: {
     ...LMN8Typography.h2,
     fontSize: 24,
+    lineHeight: 28,
     color: LMN8Colors.text100,
     marginBottom: LMN8Spacing.xs,
   },
   subtitle: {
     ...LMN8Typography.body,
-    color: LMN8Colors.text60,
+    color: LMN8Colors.text85,
     fontSize: 13,
     lineHeight: 20,
   },

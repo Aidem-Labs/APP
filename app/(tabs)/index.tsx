@@ -609,7 +609,7 @@ const styles = StyleSheet.create({
     ...LMN8Typography.body,
     fontSize: 15,
     fontWeight: '300',
-    color: LMN8Colors.text60,
+    color: LMN8Colors.text85,
     letterSpacing: 0.8,
     marginTop: LMN8Spacing.sm,
   },
@@ -914,7 +914,7 @@ const styles = StyleSheet.create({
     ...LMN8Typography.body,
     fontSize: 14,
     fontWeight: '300',
-    color: LMN8Colors.text60,
+    color: LMN8Colors.text85,
     letterSpacing: 0.3,
   },
 

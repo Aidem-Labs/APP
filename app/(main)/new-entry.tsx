@@ -1428,7 +1428,7 @@ const styles = StyleSheet.create({
     ...LMN8Typography.body,
     fontSize: 14,
     fontWeight: '300',
-    color: LMN8Colors.text60,
+    color: LMN8Colors.text85,
     textAlign: 'center',
     lineHeight: 22,
     paddingHorizontal: LMN8Spacing.md,

@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
   subtitle: {
     ...LMN8Typography.body,
     textAlign: 'center',
-    color: LMN8Colors.text60,
+    color: LMN8Colors.text85,
     marginBottom: LMN8Spacing.xl,
   },
   

@@ -11,7 +11,7 @@ export const LMN8Colors = {
   accentSecondary: '#17706e',  // Secondary actions
   accentHighlight: '#17706e',  // Hover/active states
   text100: '#0b132b',          // Headings (100% white)
-  text85: '#3a506b',  // Body text
+  text85: '#454b5e',  // Body text
   text60: '#17706e',   // Metadata/labels
   error: '#ff6b6b',            // Error states
   shadow: '#0b132b',           // Shadow color
