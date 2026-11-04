@@ -58,7 +58,7 @@ export const LMN8Button: React.FC<LMN8ButtonProps> = ({
     >
       {loading ? (
         <ActivityIndicator 
-          color={variant === 'primary' ? LMN8Colors.bgDark : LMN8Colors.accentPrimary} 
+          color={variant === 'primary' ? '#ffffff' : LMN8Colors.accentPrimary}
           size="small" 
         />
       ) : (
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   
   // Variants
   primary: {
-    backgroundColor: LMN8Colors.accentPrimary,
+    backgroundColor: LMN8Colors.cta,
     borderWidth: 0,
   },
   secondary: {
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   },
   
   primaryText: {
-    color: LMN8Colors.bgDark,
+    color: '#ffffff',
   },
   secondaryText: {
     color: LMN8Colors.accentPrimary,

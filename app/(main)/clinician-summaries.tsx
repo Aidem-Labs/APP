@@ -77,7 +77,7 @@ export default function ClinicianSummariesScreen() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={[LMN8Colors.bgDark, '#1e1e3f', LMN8Colors.bgDark]}
+        colors={[LMN8Colors.bgDark, '#edf2f2', LMN8Colors.bgDark]}
         style={StyleSheet.absoluteFill}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}

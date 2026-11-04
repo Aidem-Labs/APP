@@ -157,7 +157,7 @@ export default function NewEntryScreen() {
       icon: 'mic-outline',
       label: 'Voice Memo',
       description: 'Record your thoughts aloud',
-      color: '#f59e0b',
+      color: '#0b132b',
     },
     // Temporarily hidden per product request
     // {
@@ -1059,7 +1059,7 @@ export default function NewEntryScreen() {
       {/* Voice Recorder Section */}
       <View style={styles.voiceRecorderContainer}>
         <View style={styles.voiceInstructions}>
-          <Ionicons name="mic" size={24} color="#f59e0b" style={{ marginBottom: 8 }} />
+          <Ionicons name="mic" size={24} color="#0b132b" style={{ marginBottom: 8 }} />
           <Text style={styles.voiceInstructionsText}>
             {formData.audioUri 
               ? 'Voice memo recorded! You can play it back or record a new one.'
@@ -1075,7 +1075,7 @@ export default function NewEntryScreen() {
               onPress={startRecording}
             >
               <LinearGradient
-                colors={['#f59e0b', '#d97706']}
+                colors={['#0b132b', '#0b132b']}
                 style={styles.voiceActionGradient}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
@@ -1101,7 +1101,7 @@ export default function NewEntryScreen() {
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
               >
-                <Ionicons name="cloud-upload-outline" size={32} color={LMN8Colors.text100} />
+                <Ionicons name="cloud-upload-outline" size={32} color="#ffffff" />
                 <Text style={styles.voiceActionText}>Upload Audio File</Text>
               </LinearGradient>
             </TouchableOpacity>
@@ -1137,7 +1137,7 @@ export default function NewEntryScreen() {
                 onPress={togglePlayback}
               >
                 <LinearGradient
-                  colors={['#f59e0b', '#d97706']}
+                  colors={['#0b132b', '#0b132b']}
                   style={styles.playButtonGradient}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 1 }}
@@ -1152,7 +1152,7 @@ export default function NewEntryScreen() {
 
               <View style={styles.audioInfo}>
                 <View style={styles.audioWaveform}>
-                  <Ionicons name="analytics" size={24} color="#f59e0b" />
+                  <Ionicons name="analytics" size={24} color="#0b132b" />
                   <Text style={styles.audioStatusText}>
                     {isPlaying ? 'Playing...' : 'Ready to play'}
                   </Text>
@@ -1252,9 +1252,9 @@ export default function NewEntryScreen() {
       <LinearGradient
         colors={[
           LMN8Colors.bgDark,
-          '#1e1e3f',
+          '#edf2f2',
           LMN8Colors.bgDark,
-          '#2a1a4e',
+          '#f6f8f8',
           LMN8Colors.bgDark
         ]}
         style={StyleSheet.absoluteFill}
@@ -1313,7 +1313,7 @@ export default function NewEntryScreen() {
             disabled={isSubmitting}
           >
             <LinearGradient
-              colors={[LMN8Colors.accentPrimary, `${LMN8Colors.accentPrimary}CC`]}
+              colors={[LMN8Colors.cta, LMN8Colors.cta]}
               style={styles.submitButtonGradient}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
@@ -1322,7 +1322,7 @@ export default function NewEntryScreen() {
                 <Text style={styles.submitButtonText}>Saving...</Text>
               ) : (
                 <>
-                  <Ionicons name="checkmark-circle-outline" size={20} color={LMN8Colors.text100} />
+                  <Ionicons name="checkmark-circle-outline" size={20} color="#ffffff" />
                   <Text style={styles.submitButtonText}>Save Entry</Text>
                 </>
               )}
@@ -1652,7 +1652,7 @@ const styles = StyleSheet.create({
     ...LMN8Typography.body,
     fontSize: 15,
     fontWeight: '600',
-    color: LMN8Colors.text100,
+    color: '#ffffff',
   },
 
   cancelButton: {
@@ -1756,7 +1756,7 @@ const styles = StyleSheet.create({
     backgroundColor: `${LMN8Colors.container}80`,
     borderRadius: 16,
     borderLeftWidth: 3,
-    borderLeftColor: '#f59e0b',
+    borderLeftColor: '#0b132b',
   },
 
   voiceInstructionsText: {
@@ -1787,7 +1787,7 @@ const styles = StyleSheet.create({
     ...LMN8Typography.body,
     fontSize: 16,
     fontWeight: '600',
-    color: LMN8Colors.text100,
+    color: '#ffffff',
   },
 
   orDivider: {
@@ -1889,7 +1889,7 @@ const styles = StyleSheet.create({
     backgroundColor: `${LMN8Colors.container}95`,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: '#f59e0b40',
+    borderColor: '#0b132b40',
     gap: LMN8Spacing.md,
   },
 

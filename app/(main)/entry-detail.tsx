@@ -174,9 +174,9 @@ export default function EntryDetailScreen() {
       <LinearGradient
         colors={[
           LMN8Colors.bgDark,
-          '#1e1e3f',
+          '#edf2f2',
           LMN8Colors.bgDark,
-          '#2a1a4e',
+          '#f6f8f8',
           LMN8Colors.bgDark
         ]}
         style={StyleSheet.absoluteFill}

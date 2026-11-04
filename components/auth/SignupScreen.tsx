@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
   
   logo: {
     ...LMN8Typography.h1,
-    color: LMN8Colors.accentPrimary,
+    color: LMN8Colors.text100,
     marginBottom: LMN8Spacing.sm,
   },
   

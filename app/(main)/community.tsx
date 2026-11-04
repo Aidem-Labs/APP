@@ -445,7 +445,7 @@ const styles = StyleSheet.create({
     borderWidth: 1, borderColor: `${LMN8Colors.accentPrimary}20`,
   },
   submitButton: {
-    backgroundColor: LMN8Colors.accentPrimary, borderRadius: 12, paddingVertical: LMN8Spacing.md,
+    backgroundColor: LMN8Colors.cta, borderRadius: 12, paddingVertical: LMN8Spacing.md,
     alignItems: 'center', marginTop: LMN8Spacing.md,
   },
   submitButtonDisabled: { opacity: 0.5 },
@@ -478,7 +478,7 @@ const styles = StyleSheet.create({
     borderWidth: 1, borderColor: `${LMN8Colors.accentPrimary}20`,
   },
   commentSendButton: {
-    width: 40, height: 40, borderRadius: 20, backgroundColor: LMN8Colors.accentPrimary,
+    width: 40, height: 40, borderRadius: 20, backgroundColor: LMN8Colors.cta,
     justifyContent: 'center', alignItems: 'center',
   },
 });

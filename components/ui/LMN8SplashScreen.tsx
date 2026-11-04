@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   logoText: {
     fontSize: 36,
     fontWeight: 'bold',
-    color: LMN8Colors.accentPrimary,
+    color: LMN8Colors.text100,
     marginBottom: LMN8Spacing.sm,
   },
   

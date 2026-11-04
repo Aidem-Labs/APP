@@ -3,25 +3,26 @@
 
 export const LMN8Colors = {
   // Color Palette: "Deep Blue Sea"
-  bgDark: '#0b132b',           // Background foundation
-  container: '#1c2541',         // Cards/Modals
-  bgLight: '#2a3a5a',          // Light background for cards
-  uiSecondary: '#3a506b',      // Secondary UI, borders
-  accentPrimary: '#5bc0be',    // Primary actions, CTAs
-  accentSecondary: '#4a90e2',  // Secondary actions
-  accentHighlight: '#6fffe9',  // Hover/active states
-  text100: '#ffffff',          // Headings (100% white)
-  text85: 'rgba(255, 255, 255, 0.85)',  // Body text
-  text60: 'rgba(255, 255, 255, 0.6)',   // Metadata/labels
+  bgDark: '#f6f8f8',           // Background foundation
+  container: '#ffffff',         // Cards/Modals
+  bgLight: '#edf2f2',          // Light background for cards
+  uiSecondary: '#d6e0e0',      // Secondary UI, borders
+  accentPrimary: '#17706e',    // Primary actions, CTAs
+  accentSecondary: '#17706e',  // Secondary actions
+  accentHighlight: '#17706e',  // Hover/active states
+  text100: '#0b132b',          // Headings (100% white)
+  text85: '#3a506b',  // Body text
+  text60: '#17706e',   // Metadata/labels
   error: '#ff6b6b',            // Error states
-  shadow: '#000000',           // Shadow color
+  shadow: '#0b132b',           // Shadow color
+  cta: '#0b132b',              // Primary CTA background
   
   // Light Mode Colors
-  lightBg: '#f8f9fb',          // Light background
+  lightBg: '#f6f8f8',          // Light background
   lightSurface: '#ffffff',      // Light surface
   lightText: '#0b132b',        // Light mode primary text
-  lightSecondaryText: '#3a506b', // Light mode secondary text
-  lightBorder: '#e5e9f0',      // Light mode borders
+  lightSecondaryText: '#17706e', // Light mode secondary text
+  lightBorder: '#d6e0e0',      // Light mode borders
 } as const;
 
 export const LMN8Typography = {

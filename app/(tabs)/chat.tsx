@@ -77,9 +77,9 @@ export default function ChatScreen() {
       <LinearGradient
         colors={[
           LMN8Colors.bgDark,
-          '#1e1e3f',
+          '#edf2f2',
           LMN8Colors.bgDark,
-          '#2a1a4e',
+          '#f6f8f8',
           LMN8Colors.bgDark
         ]}
         style={StyleSheet.absoluteFill}
@@ -621,7 +621,7 @@ const styles = StyleSheet.create({
   },
 
   sendButton: {
-    backgroundColor: LMN8Colors.accentPrimary,
+    backgroundColor: LMN8Colors.cta,
     paddingHorizontal: LMN8Spacing.md,
     paddingVertical: LMN8Spacing.sm,
     borderRadius: 20,

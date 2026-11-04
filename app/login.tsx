@@ -101,9 +101,9 @@ export default function LoginPageDesign3Compact() {
       <LinearGradient
         colors={[
           LMN8Colors.bgDark,
-          '#1e1e3f',
+          '#edf2f2',
           LMN8Colors.bgDark,
-          '#2a1a4e',
+          '#f6f8f8',
           LMN8Colors.bgDark
         ]}
         style={StyleSheet.absoluteFill}
@@ -298,7 +298,7 @@ const styles = StyleSheet.create({
   logo: {
     fontSize: 42,
     fontWeight: '900',
-    color: LMN8Colors.accentPrimary,
+    color: LMN8Colors.text100,
     letterSpacing: 3,
     textShadowColor: `${LMN8Colors.accentPrimary}40`,
     textShadowOffset: { width: 0, height: 4 },
@@ -376,7 +376,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: '800',
     textAlign: 'center',
-    color: "#ffffff",
+    color: LMN8Colors.text100,
     letterSpacing: -0.5,
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 0, height: 2 },

@@ -221,9 +221,9 @@ export default function JourneyLogScreen() {
       <LinearGradient
         colors={[
           LMN8Colors.bgDark,
-          '#1e1e3f',
+          '#edf2f2',
           LMN8Colors.bgDark,
-          '#2a1a4e',
+          '#f6f8f8',
           LMN8Colors.bgDark
         ]}
         style={StyleSheet.absoluteFill}
@@ -313,7 +313,7 @@ export default function JourneyLogScreen() {
               Take a moment to reflect and document your thoughts.
             </Text>
             <TouchableOpacity style={styles.emptyStateCTA} onPress={handleNewEntry}>
-              <Ionicons name="create-outline" size={20} color={LMN8Colors.text100} />
+              <Ionicons name="create-outline" size={20} color="#ffffff" />
               <Text style={styles.emptyStateCTAText}>Create First Entry</Text>
             </TouchableOpacity>
           </View>
@@ -685,7 +685,7 @@ const styles = StyleSheet.create({
   emptyStateCTA: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: LMN8Colors.accentPrimary,
+    backgroundColor: LMN8Colors.cta,
     paddingVertical: LMN8Spacing.md,
     paddingHorizontal: LMN8Spacing.xl,
     borderRadius: 16,
@@ -696,7 +696,7 @@ const styles = StyleSheet.create({
     ...LMN8Typography.body,
     fontSize: 15,
     fontWeight: '600',
-    color: LMN8Colors.text100,
+    color: '#ffffff',
   },
 
   // Entry Cards

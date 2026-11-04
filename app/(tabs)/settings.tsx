@@ -238,9 +238,9 @@ export default function SettingsScreen() {
       <LinearGradient
         colors={[
           LMN8Colors.bgDark,
-          '#1e1e3f',
+          '#edf2f2',
           LMN8Colors.bgDark,
-          '#2a1a4e',
+          '#f6f8f8',
           LMN8Colors.bgDark
         ]}
         style={StyleSheet.absoluteFill}
@@ -490,7 +490,7 @@ export default function SettingsScreen() {
           <LMN8Button
             title="Logout"
             onPress={handleLogout}
-            variant="secondary"
+            variant="primary"
             size="large"
             fullWidth
           />
@@ -770,7 +770,7 @@ const styles = StyleSheet.create({
     ...LMN8Typography.h2,
     fontSize: 24,
     fontWeight: '700',
-    color: LMN8Colors.accentPrimary,
+    color: LMN8Colors.text100,
     marginBottom: LMN8Spacing.sm,
   },
 

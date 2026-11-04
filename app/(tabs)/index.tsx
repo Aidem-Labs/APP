@@ -182,9 +182,9 @@ export default function HomeScreen() {
       <LinearGradient
         colors={[
           LMN8Colors.bgDark,
-          '#1e1e3f',
+          '#edf2f2',
           LMN8Colors.bgDark,
-          '#2a1a4e',
+          '#f6f8f8',
           LMN8Colors.bgDark
         ]}
         style={StyleSheet.absoluteFill}
@@ -582,7 +582,7 @@ const styles = StyleSheet.create({
     marginBottom: LMN8Spacing.xxl,
   },
 
-  notificationButton: { position: 'absolute', top: 0, right: 0, width: 44, height: 44, alignItems: 'center', justifyContent: 'center' },
+  notificationButton: { position: 'absolute', top: 0, right: 0, width: 44, height: 44, alignItems: 'center', justifyContent: 'center', backgroundColor: LMN8Colors.container, borderRadius: 22, borderWidth: 1, borderColor: 'rgba(23, 112, 110, 0.12)' },
 
   greetingContainer: {
     marginBottom: LMN8Spacing.sm,
