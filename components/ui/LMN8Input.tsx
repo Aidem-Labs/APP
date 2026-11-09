@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: LMN8Colors.container,
+    backgroundColor: LMN8Colors.bgLight,
     borderWidth: 2,
     borderColor: LMN8Colors.uiSecondary,
     borderRadius: LMN8BorderRadius.md,

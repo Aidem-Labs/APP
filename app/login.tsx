@@ -150,7 +150,7 @@ export default function LoginPageDesign3Compact() {
                     <Text style={styles.inputLabel}>Username</Text>
                     <TextInput
                       style={[styles.textInput, errors.email && styles.textInputError]}
-                      placeholder="your.username"
+                      placeholder="Enter your username"
                       placeholderTextColor={LMN8Colors.text60}
                       value={formData.email}
                       onChangeText={(value) => updateFormData('email', value)}
@@ -402,7 +402,7 @@ const styles = StyleSheet.create({
 
   textInput: {
     ...LMN8Typography.body,
-    backgroundColor: `${LMN8Colors.container}60`,
+    backgroundColor: LMN8Colors.bgLight,
     borderWidth: 2,
     borderColor: `${LMN8Colors.accentPrimary}20`,
     borderRadius: 12,
@@ -432,7 +432,7 @@ const styles = StyleSheet.create({
 
   passwordInput: {
     ...LMN8Typography.body,
-    backgroundColor: `${LMN8Colors.container}60`,
+    backgroundColor: LMN8Colors.bgLight,
     borderWidth: 2,
     borderColor: `${LMN8Colors.accentPrimary}20`,
     borderRadius: 12,
